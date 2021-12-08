@@ -387,7 +387,9 @@ https://tree-sitter.github.io/tree-sitter/using-parsers#named-vs-anonymous-nodes
             name
             mode
             `',(tree-edit--pretty-print grammar)
-            nil ;; TODO: Use grammar defined regex
+            ;; HACK: Copied from java
+            "\"[\\p{L}_$][\\p{L}\\p{Nd}_$]*\""
+            ;; (tree-edit--pretty-print (tree-edit--extract-word-regex raw-grammar))
             `',(tree-edit--pretty-print supertypes)
             `',(tree-edit--pretty-print (tree-edit--invert-supertypes supertypes))
             `',(tree-edit--pretty-print (tree-edit--generate-alias-names grammar))
